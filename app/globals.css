@@ -52,6 +52,13 @@ body {
   background: var(--cbp-blue-dark);
 }
 
+.cbp-nav-link-active {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .cbp-nav-link {
   color: white;
   font-weight: 600;

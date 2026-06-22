@@ -43,6 +43,8 @@ export default async function TrackPage({ params }: PageProps) {
             </Link>
             <span className="text-gray-400">/</span>
             <span className="text-gray-600">Cargo Release Status</span>
+            <span className="text-gray-400">/</span>
+            <span className="font-mono text-gray-800">{shipment.trackingNumber}</span>
           </div>
 
           <section className="mb-6 cbp-panel">
