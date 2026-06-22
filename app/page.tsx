@@ -1,65 +1,84 @@
-import Image from "next/image";
+import { CbpFooter, CbpHeader } from "@/app/components/cbp-header";
+import { TrackingSearchForm } from "@/app/components/tracking-search-form";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+    <div className="cbp-page">
+      <CbpHeader />
+      <main className="cbp-container flex-1 py-8">
+        <div className="mx-auto max-w-2xl">
+          <div className="mb-6 border-l-4 border-[#1a4480] bg-blue-50 px-4 py-3">
+            <p className="text-sm text-gray-800">
+              <strong>ACE Secure Data Portal</strong> — Public cargo release status
+              inquiry for shipments entering the United States via{" "}
+              <strong>Portland, Oregon, USA</strong> (CBP Port 2904). Search by
+              tracking number, bill of lading, or entry number.
+            </p>
+          </div>
+
+          <section className="cbp-panel">
+            <div className="cbp-panel-header">
+              <h2 className="text-lg font-semibold text-[#1a4480]">
+                Track International Shipment
+              </h2>
+            </div>
+            <div className="cbp-panel-body">
+              <TrackingSearchForm />
+            </div>
+          </section>
+
+          <section className="mt-6 cbp-panel">
+            <div className="cbp-panel-header">
+              <h2 className="text-lg font-semibold text-[#1a4480]">Status Codes</h2>
+            </div>
+            <div className="cbp-panel-body">
+              <table className="cbp-table w-full text-sm">
+                <thead>
+                  <tr>
+                    <th className="text-left">Code</th>
+                    <th className="text-left">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="font-mono text-xs">IN-TRNST</td>
+                    <td>Shipment in transit to U.S. port of entry</td>
+                  </tr>
+                  <tr>
+                    <td className="font-mono text-xs">DOC-HOLD</td>
+                    <td>Held for document review by CBP</td>
+                  </tr>
+                  <tr>
+                    <td className="font-mono text-xs">ENT-PEND</td>
+                    <td>Entry summary filed, awaiting CBP processing</td>
+                  </tr>
+                  <tr>
+                    <td className="font-mono text-xs">CBP-REVW</td>
+                    <td>Documents under customs review</td>
+                  </tr>
+                  <tr>
+                    <td className="font-mono text-xs">DUTY-PEND</td>
+                    <td>Duties assessed, payment authorization pending</td>
+                  </tr>
+                  <tr>
+                    <td className="font-mono text-xs">EXAM-INPR</td>
+                    <td>Physical examination in progress</td>
+                  </tr>
+                  <tr>
+                    <td className="font-mono text-xs">RLS-PEND</td>
+                    <td>Customs released, awaiting carrier pickup</td>
+                  </tr>
+                  <tr>
+                    <td className="font-mono text-xs">RLS-CARR</td>
+                    <td>Released to domestic carrier for delivery</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
         </div>
       </main>
+      <CbpFooter />
     </div>
   );
 }
